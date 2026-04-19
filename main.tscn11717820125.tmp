@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://dgtwbqib01xqq"]
+
+[ext_resource type="Shader" uid="uid://ogb53numq72c" path="res://test.gdshader" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://cj53wla7loqrw" path="res://player.tscn" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://cvt4oriudholh" path="res://Textures/wispy-grass-meadow_albedo.png" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://c8lxg6aoenvk8" path="res://Controller.tscn" id="4_1bvp3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7dm0k"]
+size = Vector3(61.50894, 0.09326172, 42.096462)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h2yge"]
+render_priority = 0
+shader = ExtResource("1_0xm2m")
+shader_parameter/base_texture = ExtResource("2_h2yge")
+
+[sub_resource type="BoxMesh" id="BoxMesh_ig7tw"]
+material = SubResource("ShaderMaterial_h2yge")
+size = Vector3(32.185, 0.03, 20.335)
+
+[node name="main" type="Node3D" unique_id=1571074526]
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=1750208689]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=574964527]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10545349, 0, -2.3402615)
+shape = SubResource("BoxShape3D_7dm0k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=1771374802]
+transform = Transform3D(1.88, 0, 0, 0, 1, 0, 0, 0, 1.835, 0, 0, 0)
+mesh = SubResource("BoxMesh_ig7tw")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1398110994]
+transform = Transform3D(1, 0, 0, 0, 0.79612875, 0.6051273, 0, -0.6051273, 0.79612875, 0, 3.0115209, 2.6842034)
+shadow_enabled = true
+
+[node name="Player" parent="." unique_id=1280637450 instance=ExtResource("1_ig7tw")]
+
+[node name="Controller" parent="Player" unique_id=1501690902 instance=ExtResource("4_1bvp3")]
