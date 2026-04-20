@@ -28,4 +28,4 @@ jobs:
           itch_user: zohan11
           itch_game: S&P
           version: ${{ github.ref_name }}
-          files: "${{ steps.export.outputs.archive_directory }}/test-web.zip"
+          files: "${{ steps.export.outputs.archive_directory }}/s-p-web.zip"
