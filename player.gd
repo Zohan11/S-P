@@ -4,7 +4,7 @@ extends CharacterBody3D
 @export var run_speed: float = 6.0
 @export var gravity: float = 9.8
 @export var jump_force: float = 5.0
-@export var base_rotation_speed_deg: float = 560.0
+@export var base_rotation_speed_deg: float = 360.0
 
 @export var acceleration: float = 10.0
 @export var deceleration: float = 20.0

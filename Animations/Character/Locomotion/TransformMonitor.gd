@@ -97,14 +97,3 @@ func _process(delta: float) -> void:
 		var scale_val = (current_speed / walk_speed) / 2.0
 		scale_val = max(scale_val, 1.0)
 		anim_tree.set(MOVEMENT_ANIM_SPEED, scale_val)
-
-		# Debug print
-		var msg = "Forward: %.2f, Right: %.2f, Speed: %.2f | YawVel: %.2f deg/s | Airborne: %s | BlendVec: %s | YawBlend: %.2f | State: %s | AnimSpeed: %.2f" % [
-			smoothed_forward, smoothed_right, current_speed, yaw_speed_deg, str(airborne),
-			str(blend_vec), yaw_blend, state, scale_val
-		]
-		print(msg)
-
-		var label := get_node_or_null("Label")
-		if label:
-			label.text = msg

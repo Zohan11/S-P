@@ -20,9 +20,6 @@ func _ready() -> void:
 	pivot_ref = $CameraPivot
 	camera_ref = $CameraPivot/Camera3D
 
-	# Hide and capture mouse for gameplay
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and player_ref:
 		# Update raw yaw/pitch from mouse input

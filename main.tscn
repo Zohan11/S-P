@@ -2,8 +2,10 @@
 
 [ext_resource type="Shader" uid="uid://ogb53numq72c" path="res://test.gdshader" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://cj53wla7loqrw" path="res://player.tscn" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://dd8irriksq2si" path="res://multiplayer_client.gd" id="1_lquwl"]
 [ext_resource type="Texture2D" uid="uid://cvt4oriudholh" path="res://Textures/wispy-grass-meadow_albedo.png" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://c8lxg6aoenvk8" path="res://Controller.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://bxh8l22c2amqn" path="res://MainMenu.tscn" id="7_272bh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7dm0k"]
 size = Vector3(61.50894, 0.09326172, 42.096462)
@@ -18,6 +20,12 @@ material = SubResource("ShaderMaterial_h2yge")
 size = Vector3(32.185, 0.03, 20.335)
 
 [node name="main" type="Node3D" unique_id=1571074526]
+
+[node name="MainMenu" parent="." unique_id=1162069795 instance=ExtResource("7_272bh")]
+offset_left = 4.0
+offset_top = 6.0
+offset_right = 4.0
+offset_bottom = 6.0
 
 [node name="Ground" type="StaticBody3D" parent="." unique_id=1750208689]
 
@@ -36,3 +44,6 @@ shadow_enabled = true
 [node name="Player" parent="." unique_id=1280637450 instance=ExtResource("1_ig7tw")]
 
 [node name="Controller" parent="Player" unique_id=1501690902 instance=ExtResource("4_1bvp3")]
+
+[node name="NetworkManager" type="Node" parent="." unique_id=1808466569]
+script = ExtResource("1_lquwl")
