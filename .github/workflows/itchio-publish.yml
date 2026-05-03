@@ -25,7 +25,7 @@ jobs:
         uses: Ayowel/butler-to-itch@v1.2.0
         with:
           butler_key: ${{secrets.ITCHIO_TOKEN}}
-          itch_user: antzgames
-          itch_game: test-project
+          itch_user: zohan11
+          itch_game: S&P
           version: ${{ github.ref_name }}
           files: "${{ steps.export.outputs.archive_directory }}/s-p-web.zip"
