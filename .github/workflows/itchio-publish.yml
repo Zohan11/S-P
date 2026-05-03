@@ -22,9 +22,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{secrets.GH_TOKEN}}
 
+      - name: Inspect export directory
+        run: |
+          echo "Archive directory is: ${{ steps.export.outputs.archive_directory }}"
+          ls -R "${{ steps.export.outputs.archive_directory }}"
+
       - name: Zip exported build
         run: |
-          cd exports
+          cd "${{ steps.export.outputs.archive_directory }}"
           zip -r s-p-web.zip web
 
       - name: Publish to Itch
@@ -32,6 +37,6 @@ jobs:
         with:
           butler_key: ${{secrets.ITCHIO_TOKEN}}
           itch_user: zohan11
-          itch_game: sp
+          itch_game: S&P
           version: ${{ github.ref_name }}
-          files: "exports/s-p-web.zip"
+          files: "${{ steps.export.outputs.archive_directory }}/s-p-web.zip"
