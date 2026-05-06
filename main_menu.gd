@@ -2,6 +2,7 @@ extends Control
 
 var client: Node
 var connected: bool = false
+var join_requested: bool = false
 
 @onready var lobby_field: LineEdit = $LobbyField
 @onready var create_button: Button = $CreateButton
@@ -42,11 +43,15 @@ func _on_join_button_pressed() -> void:
 		get_tree().paused = false
 	elif lobby_name != "":
 		print("Joining lobby: %s" % lobby_name)
+		join_requested = true
 		client.start("wss://surviveandprospernow.com", lobby_name, true)
 
 
-# Step 3: On successful connection → mark connected, but don’t unpause yet
+# Step 3: On successful connection → mark connected, unpause if join was requested
 func _on_connected(id: int, use_mesh: bool) -> void:
 	connected = true
 	print("Connected with ID %d" % id)
-	# Game stays paused until Join Lobby button is pressed
+	if join_requested:
+		hide()
+		get_tree().paused = false
+		join_requested = false
