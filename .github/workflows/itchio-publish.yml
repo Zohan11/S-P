@@ -26,6 +26,6 @@ jobs:
         with:
           butler_key: ${{secrets.ITCHIO_TOKEN}}
           itch_user: zohan11
-          itch_game: S&P
+          itch_game: sp
           version: ${{ github.ref_name }}
           files: "${{ steps.export.outputs.archive_directory }}/s-p-web.zip"
